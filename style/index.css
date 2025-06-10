@@ -7,10 +7,33 @@
   font-family: "Roboto", sans-serif;
 }
 
+:root {
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 32px;
+  --spacing-xl: 64px;
+
+  --h1-font-size: 4rem;
+
+  --primary-color: yellow;
+
+  --standard-shadow: 0px 5px 10px black;
+}
+
+/* GENERAL STYLE */
+.container {
+  max-width: 1424px;
+  margin: auto;
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
 /* HEADER SECTION */
 header {
-  padding: 32px 0;
-  border-bottom: 1px solid black;
+  padding: var(--spacing-m) 0 0 0;
+  margin-bottom: var(--spacing-l);
 }
 
 header .container {
@@ -18,8 +41,6 @@ header .container {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 90%;
-  margin: auto;
 }
 
 #logo {
@@ -54,7 +75,7 @@ header .navbar-right img {
 
 .navbar-center a {
   text-decoration: none;
-  padding: 8px;
+  padding: var(--spacing-s);
   transition: all 0.15s ease;
 }
 
@@ -67,5 +88,52 @@ header .navbar-right img {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--spacing-s);
+}
+
+/* HERO SECTION */
+.hero-section {
+  width: 100%;
+  height: 525px;
+  position: relative;
+}
+
+.hero-section .container {
+  height: 100%;
+}
+
+.hero-section h1 {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-section h1 span {
+  color: var(--primary-color);
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0 var(--spacing-m);
+  text-shadow: var(--standard-shadow);
+}
+
+.hero-section img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+/* PRODUCTS SECTION */
+.products-section {
+  width: 100%;
+}
+
+/* BRANDS SECTION */
+.brands-section {
+  width: 100%;
 }

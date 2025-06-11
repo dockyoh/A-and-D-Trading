@@ -156,6 +156,7 @@ header .navbar-right img {
   overflow: hidden;
   border-radius: var(--border-radius-s);
   cursor: pointer;
+  width: 300px;
 }
 
 .product .product-img-wrapper {
@@ -184,7 +185,6 @@ header .navbar-right img {
 
 .product .brand {
   color: gray;
-  margin-left: var(--spacing-s);
 }
 
 .product .name-price-wrapper {
@@ -192,7 +192,7 @@ header .navbar-right img {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: var(--spacing-s);
+  padding: var(--spacing-s) 0;
 }
 
 .name-price-wrapper p {

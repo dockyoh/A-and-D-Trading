@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  object-fit: cover;
+  color: black;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 32px;
+  --spacing-xl: 64px;
+
+  --h1-font-size: 4rem;
+
+  --font-size-s: 1rem;
+  --font-size-m: 1.1rem;
+  --font-size-l: 1.2rem;
+  --font-size-xl: 1.3rem;
+
+  --primary-color: yellow;
+
+  --standard-shadow: 0px 5px 10px black;
+
+  --border-radius-s: 10px;
+  --border-radius-m: 20px;
+  --border-radius-l: 30px;
+  --border-radius-xl: 40px;
+}
+
+/* GENERAL STYLE */
+.container {
+  max-width: 1424px;
+  margin: auto;
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+/* HEADER SECTION */
+header {
+  padding: var(--spacing-m) 0 0 0;
+  margin-bottom: var(--spacing-l);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header #logo img {
+  width: 100px;
+}
+
+header .navbar-right img {
+  width: 25px;
+}
+
+.navbar-center {
+  width: 50%;
+}
+
+.navbar-center ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.navbar-center li {
+  list-style: none;
+}
+
+.navbar-center a {
+  text-decoration: none;
+  padding: var(--spacing-s);
+  transition: all 0.15s ease;
+}
+
+.navbar-center a:hover {
+  border-bottom: 1px solid black;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-s);
+}
+
+/* SEARCH SECTION */
+.search-section {
+  background-color: rgba(211, 211, 211, 0.5);
+}
+
+.search-section .container {
+  padding: var(--spacing-l);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form label {
+  width: 50%;
+  position: relative;
+}
+
+.search-form label #search-icon {
+  width: 35px;
+  position: absolute;
+  top: 10px;
+  left: 8px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.search-section input {
+  width: 100%;
+  padding: var(--spacing-m) var(--spacing-m) var(--spacing-m) var(--spacing-xl);
+  border-radius: var(--border-radius-l);
+  font-size: var(--font-size-s);
+  border: none;
+  outline: none;
+  position: relative;
+}

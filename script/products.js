@@ -9,7 +9,7 @@ export let products = [
     image: "assets/cement.jpg",
   },
   {
-    id: "2",
+    id: "456346fgh",
     pName: "Concrete Hollow Blocks (CHB)",
     specs: "",
     brand: "SSIC",

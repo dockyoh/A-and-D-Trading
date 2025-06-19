@@ -1,9 +1,9 @@
 import { addToCart } from "./cart.js";
+import { getInputs, setInputs } from "./inputs-logic.js";
 import { renderProducts } from "./render-html.js";
 import { searchProduct } from "./shop.js";
 
 renderProducts();
-let isIncrement = false;
 
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -14,50 +14,56 @@ document.querySelector("form").addEventListener("submit", (event) => {
 });
 
 document.querySelectorAll(".input-quantity").forEach((input) => {
-  let keys = "";
+  setInputs(input.value, input.dataset.productId);
+  let keys = "1";
   input.addEventListener("keyup", (event) => {
+    keys = getInputs(input.dataset.productId);
     if (Number(event.key) || event.key === "0") {
       if (keys.length === 0 && event.key === "0") {
-        input.value = "1";
+        input.value = 1;
         keys = "1";
       } else {
         keys += event.key;
       }
+      console.log(keys);
     } else {
       if (event.key === "Backspace") {
-        let newKeys = keys.slice(0, -1);
+        let newKeys = keys.toString().slice(0, -1);
         keys = newKeys;
       }
-      // input.value = keys;
     }
-    input.value = keys;
+    console.log(`KEYUP ID: ${input.dataset.productId}`);
+    console.log(`KEYUP VALUE: ${input.value}`);
+    console.log(`INPUT VALUE: ${input.value}`);
+    console.log(`KEYS VALUE: ${keys}`);
+    console.log(`KEYUP KEYS: ${keys}`);
+    setInputs(keys, input.dataset.productId);
+    keys = getInputs(input.dataset.productId);
+    input.value = getInputs(input.dataset.productId);
   });
-  console.log(`input value: ${input.value}`);
 });
 
 document.querySelectorAll(".decrement").forEach((decrement) => {
   decrement.addEventListener("click", (event) => {
-    isIncrement = false;
     const input = event.target.nextElementSibling;
     let value = Number(input.value);
     if (value > 1) {
       value -= 1;
       input.value = value;
     }
-    console.log(input.value);
-    decrement.setAttribute("data-quantity", `${value}`);
+    console.log(`DECREMENT KEYS: ${value}`);
+    setInputs(value, decrement.dataset.productId);
   });
 });
 
 document.querySelectorAll(".increment").forEach((increment) => {
   increment.addEventListener("click", (event) => {
-    isIncrement = true;
     const input = event.target.previousElementSibling;
     let value = Number(input.value);
     value += 1;
     input.value = value;
-    console.log(input.value);
-    increment.setAttribute("data-quantity", `${value}`);
+    console.log(`INCREMENT KEYS: ${value}`);
+    setInputs(value, increment.dataset.productId);
   });
 });
 
@@ -65,7 +71,6 @@ document.querySelectorAll(".add-to-cart").forEach((addButton) => {
   addButton.addEventListener("click", (event) => {
     event.preventDefault();
     const productId = addButton.dataset.productId;
-    addToCart(productId, isIncrement);
-    console.log(productId);
+    addToCart(productId);
   });
 });

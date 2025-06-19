@@ -105,6 +105,17 @@ header .navbar-right img {
   align-items: center;
   flex-wrap: wrap;
   gap: var(--spacing-s);
+  /* border: 1px solid red; */
+  position: relative;
+}
+
+.navbar-right .cart-quantity {
+  position: absolute;
+  top: -13px;
+  left: 18px;
+  text-align: center;
+  /* width: 25px; */
+  width: 100%;
 }
 
 /* SEARCH SECTION */

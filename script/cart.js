@@ -1,40 +1,37 @@
 import { products } from "./products.js";
 
 export let cart = [];
-let quantity;
 
-export function addToCart(productId, isIncrement) {
-  if (isIncrement) {
-    getIncrementValue(productId);
-  } else {
-    getDecrementValue(productId);
-  }
-  products.forEach((item) => {
-    if (item.id === productId) {
-      console.log("Product Match found");
-      console.log(`Quantity: ${quantity}`);
-    } else {
-      console.log("No Match Data");
+export function addToCart(productId) {
+  const matchingItem = cart.find((item) => item.id === productId);
+
+  document.querySelectorAll(".input-quantity").forEach((input) => {
+    if (input.dataset.productId === productId) {
+      const quantity = Number(input.value);
+
+      if (!matchingItem) {
+        cart.push({
+          id: productId,
+          quantity: quantity,
+        });
+      } else {
+        const matchingIndex = cart.indexOf(matchingItem);
+        // console.log(cart[matchingIndex].quantity);
+        cart[matchingIndex].quantity += quantity;
+      }
+      // console.log(`Product ID: ${productId} Quantity: ${quantity}`);
+      // console.log(cart.indexOf(matchingItem));
+      console.log(cart);
+      renderCartQuantity();
     }
   });
 }
 
-function getIncrementValue(productId) {
-  document.querySelectorAll(".increment").forEach((increment) => {
-    if (increment.dataset.productId === productId) {
-      quantity = increment.dataset.quantity;
-      if (!quantity) quantity = 1;
-      console.log(`increment Quantity: ${quantity}`);
-    }
+function renderCartQuantity() {
+  let cartQuantityEl = document.querySelector(".cart-quantity");
+  let totalQuantity = 0;
+  cart.forEach((item) => {
+    totalQuantity += item.quantity;
   });
-}
-
-function getDecrementValue(productId) {
-  document.querySelectorAll(".decrement").forEach((decrement) => {
-    if (decrement.dataset.productId === productId) {
-      quantity = decrement.dataset.quantity;
-      if (!quantity) quantity = 1;
-      console.log(`decrement Quantity: ${quantity}`);
-    }
-  });
+  cartQuantityEl.textContent = totalQuantity;
 }

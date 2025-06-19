@@ -1,3 +1,4 @@
+import { formatPrice } from "./currency-formater.js";
 import { products } from "./products.js";
 import { searchResult } from "./shop.js";
 
@@ -58,7 +59,7 @@ function createElements(item) {
 
   brandEl.textContent = `${item.brand}`;
   nameEl.textContent = `${item.pName}`;
-  priceEl.textContent = `₱${item.price}.00`;
+  priceEl.textContent = `₱${formatPrice(item.priceInCents)}`;
   decrementEl.textContent = "-";
   incrementEl.textContent = "+";
   addToCartEl.textContent = "Add to Cart";

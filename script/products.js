@@ -5,7 +5,7 @@ export let products = [
     specs: "",
     brand: "Holcim",
     category: "Cement and Concrete Products",
-    price: 275,
+    priceInCents: 27550,
     image: "assets/cement.jpg",
   },
   {
@@ -14,7 +14,7 @@ export let products = [
     specs: "",
     brand: "SSIC",
     category: "Cement and Concrete Products",
-    price: 275,
+    priceInCents: 16342,
     image: "assets/Hollow-Block-Icon-1.png",
   },
   {
@@ -23,7 +23,7 @@ export let products = [
     specs: "",
     brand: "ABC",
     category: "Cement and Concrete Products",
-    price: 275,
+    priceInCents: 850,
     image: "assets/ABC-Tile-Grout-Original-1.png",
   },
   {
@@ -32,7 +32,7 @@ export let products = [
     specs: "",
     brand: "Bostik",
     category: "Cement and Concrete Products",
-    price: 275,
+    priceInCents: 56455,
     image: "assets/mortar-bostik.png",
   },
   {
@@ -41,7 +41,7 @@ export let products = [
     specs: "Fine",
     brand: "A&D Trading",
     category: "Aggregates",
-    price: 275,
+    priceInCents: 7458,
     image: "assets/fine-sand.jpg",
   },
   {
@@ -50,7 +50,7 @@ export let products = [
     specs: "",
     brand: "A&D Trading",
     category: "Aggregates",
-    price: 275,
+    priceInCents: 46414,
     image: "assets/gravel.jpeg",
   },
   {
@@ -59,7 +59,7 @@ export let products = [
     specs: "",
     brand: "A&D Trading",
     category: "Aggregates",
-    price: 275,
+    priceInCents: 9137,
     image: "assets/Crushed-Stone.jpg",
   },
   {
@@ -68,7 +68,7 @@ export let products = [
     specs: "",
     brand: "A&D Trading",
     category: "Aggregates",
-    price: 275,
+    priceInCents: 13285,
     image: "assets/laid-stone-riprap.png",
   },
   {
@@ -77,7 +77,7 @@ export let products = [
     specs: "12mm",
     brand: "A&D Trading",
     category: "Steel and Metal Products",
-    price: 275,
+    priceInCents: 33185,
     image: "/assets/rebars.jpg",
   },
   {
@@ -86,7 +86,7 @@ export let products = [
     specs: "10mm",
     brand: "A&D Trading",
     category: "Steel and Metal Products",
-    price: 275,
+    priceInCents: 98644,
     image: "/assets/rebars.jpg",
   },
 ];

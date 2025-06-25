@@ -78,7 +78,7 @@ export let products = [
     brand: "A&D Trading",
     category: "Steel and Metal Products",
     priceInCents: 33185,
-    image: "../assets/rebars.jpg",
+    image: "assets/rebars.jpg",
   },
   {
     id: "10",
@@ -87,6 +87,6 @@ export let products = [
     brand: "A&D Trading",
     category: "Steel and Metal Products",
     priceInCents: 98644,
-    image: "../assets/rebars.jpg",
+    image: "assets/rebars.jpg",
   },
 ];

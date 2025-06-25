@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/cart-orders.css" />
+    <title>Cart Orders</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a id="logo" href="index.html"
+          ><img
+            src="assets/ChatGPT Image Jun 7, 2025, 10_24_16 AM.png"
+            alt="A&D Trading Logo"
+        /></a>
+        <nav class="navbar-center">
+          <ul>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Brands</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Visit</a></li>
+          </ul>
+        </nav>
+        <div class="navbar-right">
+          <a id="customer-account" href="#">
+            <img src="assets/user.png" alt="user icon"
+          /></a>
+          <a id="cart" href="#">
+            <span class="cart-quantity"></span>
+            <img src="assets/cart.png" alt="cart icon"
+          /></a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <h1>Cart <span>(0 Item(s))</span></h1>
+      <!-- ORDER SECTION -->
+      <section class="order-section">
+        <div class="container">
+          <h2>Review your order</h2>
+          <div class="two-column">
+            <div class="col-left order-item-container">
+              <!-- ITEM CONTAINER -->
+              <div class="item-container">
+                <h2>Delivery date: Tuesday, July 1</h2>
+                <div class="two-column">
+                  <div class="col-left">
+                    <div class="two-column detail-wrapper">
+                      <div class="col-left">
+                        <img src="assets/cement.jpg" alt="cement image" />
+                      </div>
+                      <div class="col-right detail">
+                        <p class="order-name">Cement(Portland)</p>
+                        <p class="order-price">₱250.00</p>
+                        <p>
+                          Quantity: 2 <span class="update">Update</span>
+                          <span class="delete">Delete</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-right delivery-option">
+                    <p>Choose a delivery option:</p>
+                    <div class="radio-wrapper">
+                      <input
+                        type="radio"
+                        name="shipping"
+                        id="free-shipping"
+                        checked
+                      />
+                      <div class="label-wrapper">
+                        <label for="free-shipping">Tuesday, July 1</label><br />
+                        <label for="free-shipping">FREE Shipping</label>
+                      </div>
+                    </div>
+                    <div class="radio-wrapper">
+                      <input type="radio" name="shipping" id="five-days" />
+                      <div class="label-wrapper">
+                        <label for="five-days">Tuesday, July 1</label><br />
+                        <label for="five-days">FREE Shipping</label>
+                      </div>
+                    </div>
+                    <div class="radio-wrapper">
+                      <input type="radio" name="shipping" id="three-days" />
+                      <div class="label-wrapper">
+                        <label for="three-days">Tuesday, July 1</label><br />
+                        <label for="three-days">FREE Shipping</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-right order-summary-container"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+    <script type="module" src="script/main.js"></script>
+  </body>
+</html>

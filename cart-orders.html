@@ -13,15 +13,17 @@
     <title>Cart Orders</title>
   </head>
   <body>
+    <!-- HEADER -->
     <header>
-      <div class="container">
-        <a id="logo" href="index.html"
+      <div class="header-container container">
+        <a class="header-logo-container" href="index.html"
           ><img
+            class="header-logo"
             src="assets/ChatGPT Image Jun 7, 2025, 10_24_16 AM.png"
             alt="A&D Trading Logo"
         /></a>
-        <nav class="navbar-center">
-          <ul>
+        <nav class="header-nav-container">
+          <ul class="header-links-list">
             <li><a href="shop.html">Shop</a></li>
             <li><a href="#">Products</a></li>
             <li><a href="#">Brands</a></li>
@@ -29,78 +31,54 @@
             <li><a href="#">Visit</a></li>
           </ul>
         </nav>
-        <div class="navbar-right">
-          <a id="customer-account" href="#">
-            <img src="assets/user.png" alt="user icon"
+        <div class="header-icons-container">
+          <a class="header-customer-link" href="#">
+            <img
+              class="header-customer-icon"
+              src="assets/user.png"
+              alt="user icon"
           /></a>
-          <a id="cart" href="#">
-            <span class="cart-quantity"></span>
-            <img src="assets/cart.png" alt="cart icon"
+          <a class="header-cart-link" href="#">
+            <span class="header-cart-quantity">100</span>
+            <img class="header-cart-icon" src="assets/cart.png" alt="cart icon"
           /></a>
         </div>
       </div>
     </header>
     <main>
-      <h1>Cart <span>(0 Item(s))</span></h1>
-      <!-- ORDER SECTION -->
-      <section class="order-section">
-        <div class="container">
-          <h2>Review your order</h2>
-          <div class="two-column">
-            <div class="col-left order-item-container">
-              <!-- ITEM CONTAINER -->
-              <div class="item-container">
-                <h2>Delivery date: Tuesday, July 1</h2>
-                <div class="two-column">
-                  <div class="col-left">
-                    <div class="two-column detail-wrapper">
-                      <div class="col-left">
-                        <img src="assets/cement.jpg" alt="cement image" />
-                      </div>
-                      <div class="col-right detail">
-                        <p class="order-name">Cement(Portland)</p>
-                        <p class="order-price">₱250.00</p>
-                        <p>
-                          Quantity: 2 <span class="update">Update</span>
-                          <span class="delete">Delete</span>
-                        </p>
-                      </div>
-                    </div>
+      <section class="titles-container container">
+        <h1 class="checkout-title">Checkout(4 items)</h1>
+        <h2 class="order-header">Review your order</h2>
+      </section>
+      <section class="order">
+        <div class="order-container container">
+          <div class="order-left">
+            <h3 class="order-item-date">Delivery date: Tuesday, July 8</h3>
+            <div class="order-item-container">
+              <div class="order-item-wrapper">
+                <div class="order-item-details">
+                  <img
+                    src="assets/ABC-Tile-Grout-Original-1.png"
+                    alt="tile grout image"
+                    class="order-item-image"
+                  />
+                  <div class="order-item-description-wrapper">
+                    <p class="order-item-name">Tile grout</p>
+                    <p class="order-item-price">₱75.00</p>
+                    <p class="order-item-quantity">
+                      Quantity: 2 <span>Update</span> <span>Delete</span>
+                    </p>
                   </div>
-                  <div class="col-right delivery-option">
-                    <p>Choose a delivery option:</p>
-                    <div class="radio-wrapper">
-                      <input
-                        type="radio"
-                        name="shipping"
-                        id="free-shipping"
-                        checked
-                      />
-                      <div class="label-wrapper">
-                        <label for="free-shipping">Tuesday, July 1</label><br />
-                        <label for="free-shipping">FREE Shipping</label>
-                      </div>
-                    </div>
-                    <div class="radio-wrapper">
-                      <input type="radio" name="shipping" id="five-days" />
-                      <div class="label-wrapper">
-                        <label for="five-days">Tuesday, July 1</label><br />
-                        <label for="five-days">FREE Shipping</label>
-                      </div>
-                    </div>
-                    <div class="radio-wrapper">
-                      <input type="radio" name="shipping" id="three-days" />
-                      <div class="label-wrapper">
-                        <label for="three-days">Tuesday, July 1</label><br />
-                        <label for="three-days">FREE Shipping</label>
-                      </div>
-                    </div>
-                  </div>
+                </div>
+                <div class="order-delivery-option">
+                  <h4 class="order-option-header">Choose a delivery option</h4>
                 </div>
               </div>
             </div>
-            <div class="col-right order-summary-container"></div>
           </div>
+          <section class="order-summary-right">
+            <h4 class="order-summary-header">Order Summary</h4>
+          </section>
         </div>
       </section>
     </main>

@@ -22,8 +22,9 @@
 
   --primary-color: yellow;
   --secondary-color: rgb(255, 71, 71);
+  --primary-accent: green;
   --dark-color: black;
-  --light-color: lightgrey;
+  --light-color: rgb(124, 124, 124);
 
   --standard-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 
@@ -41,7 +42,8 @@ body {
 }
 
 .container {
-  max-width: 1450px;
+  max-width: 80%;
+  /* max-width: 1450px; */
   margin: 0 auto;
 }
 
@@ -148,8 +150,12 @@ header {
   gap: var(--spacing-m);
 }
 
+.order-item-date {
+  color: var(--primary-accent);
+}
+
 .order-left,
-.order-summary-right {
+.summary {
   border: 1px solid black;
   border-radius: var(--border-radius-s);
   padding: var(--spacing-m);
@@ -162,7 +168,7 @@ header {
   gap: var(--spacing-m);
 }
 
-.order-summary-right {
+.summary {
   width: 40%;
 }
 
@@ -176,10 +182,7 @@ header {
   width: 50%;
   display: flex;
   justify-content: space-between;
-}
-
-.order-delivery-option {
-  width: 50%;
+  gap: var(--spacing-s);
 }
 
 .order-item-description-wrapper {
@@ -192,4 +195,85 @@ header {
 .order-item-image {
   width: 25%;
   height: auto;
+}
+
+.order__item-name {
+  font-weight: bold;
+}
+
+.order__item-price {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.order__item-quantity span {
+  color: var(--primary-accent);
+  font-weight: bold;
+}
+
+/* DELIVERY OPTION */
+.delivery {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+.delivery__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.delivery__option {
+  display: flex;
+  gap: var(--spacing-s);
+}
+
+.delivery__label-date {
+  color: var(--primary-accent);
+  font-weight: bold;
+}
+
+.delivery__label-price {
+  color: var(--light-color);
+}
+
+/* SUMMARY */
+.summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-s);
+}
+
+.summary__description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.summary__place-order {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-m) 0;
+}
+
+.summary__shipping-price {
+  border-bottom: 1px solid var(--light-color);
+  padding: 0 0 var(--spacing-s) var(--spacing-m);
+}
+
+.summary__bottom--border {
+  border-bottom: 1px solid var(--light-color);
+  padding-bottom: var(--spacing-s);
+}
+
+.summary__total,
+.summary__total-price {
+  color: var(--secondary-color);
+  font-weight: bold;
+  font-size: var(--font-size-m);
+  padding: var(--spacing-s) 0 var(--spacing-m) 0;
 }

@@ -19,6 +19,13 @@ export function renderSearchResult() {
   });
 }
 
+export function renderCartQuantity(totalItems) {
+  console.log(totalItems);
+  const quantityEl = document.querySelector(".cart-quantity");
+  console.log(quantityEl);
+  quantityEl.textContent = totalItems;
+}
+
 function createElements(item) {
   const productContainerEl = document.createElement("div");
 

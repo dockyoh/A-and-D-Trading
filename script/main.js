@@ -1,8 +1,10 @@
+import { totalCartQuantity } from "./cart-orders.js";
 import { addToCart } from "./cart.js";
 import { getInputs, setInputs } from "./inputs-logic.js";
 import { renderProducts } from "./render-html.js";
 import { searchProduct } from "./shop.js";
 
+totalCartQuantity();
 renderProducts();
 
 document.querySelector("form").addEventListener("submit", (event) => {

@@ -7,6 +7,7 @@
 }
 
 :root {
+  --spacing-xs: 5px;
   --spacing-s: 8px;
   --spacing-m: 16px;
   --spacing-l: 32px;
@@ -124,7 +125,7 @@ header {
   height: auto;
 }
 
-.header-cart-quantity {
+.cart-quantity {
   position: absolute;
   top: -10px;
   width: 100%;
@@ -146,8 +147,29 @@ header {
 /* ORDERS */
 .order-container {
   display: flex;
-  justify-content: space-between;
   gap: var(--spacing-m);
+  align-items: flex-start;
+}
+
+.order-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+#order__input-quantity {
+  padding: var(--spacing-xs) 0;
+  width: 50px;
+  border: none;
+  font-size: var(--font-size-s);
+  text-align: center;
+}
+
+.order__remove {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  border-bottom: 1px solid var(--light-color);
 }
 
 .order-item-date {
@@ -162,14 +184,14 @@ header {
 }
 
 .order-left {
-  width: 60%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-m);
 }
 
 .summary {
-  width: 40%;
+  width: 25%;
 }
 
 .order-item-wrapper {
@@ -186,15 +208,15 @@ header {
 }
 
 .order-item-description-wrapper {
-  width: 75%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
 }
 
 .order-item-image {
-  width: 25%;
-  height: auto;
+  width: 100px;
+  height: 100px;
 }
 
 .order__item-name {
@@ -209,6 +231,7 @@ header {
 .order__item-quantity span {
   color: var(--primary-accent);
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* DELIVERY OPTION */
@@ -229,6 +252,10 @@ header {
   gap: var(--spacing-s);
 }
 
+.delivery__option * {
+  cursor: pointer;
+}
+
 .delivery__label-date {
   color: var(--primary-accent);
   font-weight: bold;
@@ -244,6 +271,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--spacing-s);
+  width: 40%;
 }
 
 .summary__description {
@@ -258,11 +286,15 @@ header {
   border: none;
   border-radius: var(--border-radius-s);
   padding: var(--spacing-m) 0;
+  cursor: pointer;
+}
+
+.summary__description--shipping * {
+  padding-bottom: var(--spacing-s);
 }
 
 .summary__shipping-price {
   border-bottom: 1px solid var(--light-color);
-  padding: 0 0 var(--spacing-s) var(--spacing-m);
 }
 
 .summary__bottom--border {
@@ -270,10 +302,9 @@ header {
   padding-bottom: var(--spacing-s);
 }
 
-.summary__total,
-.summary__total-price {
+.summary__description--total {
   color: var(--secondary-color);
   font-weight: bold;
   font-size: var(--font-size-m);
-  padding: var(--spacing-s) 0 var(--spacing-m) 0;
+  padding: var(--spacing-m) 0;
 }

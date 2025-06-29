@@ -1,6 +1,6 @@
 import { products } from "./products.js";
 
-export let cart = [];
+export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(productId) {
   const matchingItem = cart.find((item) => item.id === productId);
@@ -16,15 +16,13 @@ export function addToCart(productId) {
         });
       } else {
         const matchingIndex = cart.indexOf(matchingItem);
-        // console.log(cart[matchingIndex].quantity);
         cart[matchingIndex].quantity += quantity;
       }
-      // console.log(`Product ID: ${productId} Quantity: ${quantity}`);
-      // console.log(cart.indexOf(matchingItem));
       console.log(cart);
       renderCartQuantity();
     }
   });
+  saveCart();
 }
 
 function renderCartQuantity() {
@@ -34,4 +32,8 @@ function renderCartQuantity() {
     totalQuantity += item.quantity;
   });
   cartQuantityEl.textContent = totalQuantity;
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
 }

@@ -39,7 +39,7 @@
               alt="user icon"
           /></a>
           <a class="header-cart-link" href="#">
-            <span class="header-cart-quantity">100</span>
+            <span class="cart-quantity"></span>
             <img class="header-cart-icon" src="assets/cart.png" alt="cart icon"
           /></a>
         </div>
@@ -50,11 +50,12 @@
         <h1 class="checkout-title">Checkout(4 items)</h1>
         <h2 class="order-header">Review your order</h2>
       </section>
+      <!-- ORDER SUMMARY -->
       <section class="order">
         <div class="order-container container">
           <div class="order-left">
-            <h3 class="order-item-date">Delivery date: Tuesday, July 8</h3>
             <div class="order-item-container">
+              <h3 class="order-item-date">Delivery date: Tuesday, July 8</h3>
               <div class="order-item-wrapper">
                 <div class="order-item-details">
                   <img
@@ -65,9 +66,16 @@
                   <div class="order-item-description-wrapper">
                     <p class="order__item-name">Tile grout</p>
                     <p class="order__item-price">₱75.00</p>
-                    <p class="order__item-quantity">
-                      Quantity: 2 <span>Update</span> <span>Delete</span>
-                    </p>
+                    <div class="order__edit-quantity-container">
+                      <label for="order__input-quantity">Quanity:</label>
+                      <input
+                        type="number"
+                        name="order__input-quantity"
+                        id="order__input-quantity"
+                        value="1"
+                      />
+                      <button class="order__remove">Remove</button>
+                    </div>
                   </div>
                 </div>
                 <div class="delivery">
@@ -78,6 +86,7 @@
                       type="radio"
                       name="delivery__input-radio"
                       id="delivery__input-1"
+                      checked
                     />
                     <label for="delivery__input-1" class="delivery__label">
                       <p class="delivery__label-date">Tuesday, July 8</p>
@@ -113,13 +122,14 @@
               </div>
             </div>
           </div>
+          <!-- SUMMARY -->
           <section class="summary">
             <h4 class="summary__header">Order Summary</h4>
             <div class="summary__description">
               <p class="summary__items">Items(4)</p>
               <span class="summary__items-price">₱60.23</span>
             </div>
-            <div class="summary__description">
+            <div class="summary__description summary__description--shipping">
               <p class="summary__shipping">Shipping & handling</p>
               <span class="summary__shipping-price">₱0.00</span>
             </div>
@@ -131,7 +141,7 @@
               <p class="summary__estimated-tax">Estimated tax (10%)</p>
               <span class="summary__estimated-tax-price">₱6.02</span>
             </div>
-            <div class="summary__description">
+            <div class="summary__description summary__description--total">
               <p class="summary__total">Order total</p>
               <span class="summary__total-price">₱66.25</span>
             </div>
@@ -141,6 +151,6 @@
       </section>
     </main>
     <footer></footer>
-    <script type="module" src="script/main.js"></script>
+    <script type="module" src="script/cart-orders.js"></script>
   </body>
 </html>

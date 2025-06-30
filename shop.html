@@ -61,6 +61,32 @@
       <!-- PRODUCT SECTION -->
       <section class="product-gallery-section">
         <div class="container product-grid-container">
+          <!-- TEMPLATE -->
+          <template id="render-product-template">
+            <div class="product">
+              <div class="product-img-wrapper">
+                <img src="assets/mortar-bostik.png" alt="" />
+              </div>
+              <p class="brand">Bostik</p>
+              <div class="name-price-wrapper">
+                <p class="name">Mortar</p>
+                <p class="price">₱275.00</p>
+              </div>
+              <div class="quantity-add-container">
+                <div class="quantity-wrapper">
+                  <span class="decrement">-</span>
+                  <input
+                    type="text"
+                    name="input-quantity"
+                    id="input-quantity"
+                    value="1"
+                  />
+                  <span class="increment">+</span>
+                </div>
+                <button class="add-to-cart">Add to cart</button>
+              </div>
+            </div>
+          </template>
           <!-- <div class="product">
             <div class="product-img-wrapper">
               <img src="assets/mortar-bostik.png" alt="" />

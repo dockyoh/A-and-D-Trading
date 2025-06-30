@@ -3,6 +3,7 @@ import { products } from "./products.js";
 import { searchResult } from "./shop.js";
 
 const gridContainerEl = document.querySelector(".product-grid-container");
+const orderLeftEl = document.querySelector(".order-left");
 
 export function renderProducts() {
   products.map((item) => {
@@ -19,11 +20,20 @@ export function renderSearchResult() {
   });
 }
 
-export function renderCartQuantity(totalItems) {
-  console.log(totalItems);
-  const quantityEl = document.querySelector(".cart-quantity");
-  console.log(quantityEl);
-  quantityEl.textContent = totalItems;
+export function renderCartItem(productItem, cartItem) {
+  const template = document.querySelector("#order-item-template");
+  const clone = template.content.cloneNode(true);
+
+  clone.querySelector(".order-item-date").textContent =
+    "Delivery date: Tuesday, July 8";
+  clone.querySelector(".order-item-image").src = productItem.image;
+  clone.querySelector(".order__item-name").textContent = productItem.pName;
+  clone.querySelector(".order__item-price").textContent = formatPrice(
+    productItem.priceInCents
+  );
+  clone.querySelector("#order__input-quantity").value = cartItem.quantity;
+
+  orderLeftEl.appendChild(clone);
 }
 
 function createElements(item) {

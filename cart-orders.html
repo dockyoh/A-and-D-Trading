@@ -53,8 +53,9 @@
       <!-- ORDER SUMMARY -->
       <section class="order">
         <div class="order-container container">
-          <div class="order-left">
-            <div class="order-item-container">
+          <section class="order-left">
+            <!-- ORDER ITEMS -->
+            <!-- <div class="order-item-container">
               <h3 class="order-item-date">Delivery date: Tuesday, July 8</h3>
               <div class="order-item-wrapper">
                 <div class="order-item-details">
@@ -80,7 +81,7 @@
                 </div>
                 <div class="delivery">
                   <h4 class="delivery__title">Choose a delivery option</h4>
-                  <!--  -->
+
                   <div class="delivery__option">
                     <input
                       type="radio"
@@ -93,7 +94,7 @@
                       <p class="delivery__label-price">FREE Shipping</p>
                     </label>
                   </div>
-                  <!--  -->
+
                   <div class="delivery__option">
                     <input
                       type="radio"
@@ -105,7 +106,7 @@
                       <p class="delivery__label-price">₱4.99 - Shipping</p>
                     </label>
                   </div>
-                  <!--  -->
+
                   <div class="delivery__option">
                     <input
                       type="radio"
@@ -117,11 +118,82 @@
                       <p class="delivery__label-price">₱9.99 - Shipping</p>
                     </label>
                   </div>
-                  <!--  -->
                 </div>
               </div>
-            </div>
-          </div>
+            </div> -->
+            <!-- CART ITEM TEMPLATE -->
+            <template id="order-item-template">
+              <div class="order-item-container">
+                <h3 class="order-item-date">Delivery date: Tuesday, July 8</h3>
+                <div class="order-item-wrapper">
+                  <div class="order-item-details">
+                    <img
+                      src="assets/ABC-Tile-Grout-Original-1.png"
+                      alt="tile grout image"
+                      class="order-item-image"
+                    />
+                    <div class="order-item-description-wrapper">
+                      <p class="order__item-name">Tile grout</p>
+                      <p class="order__item-price">₱75.00</p>
+                      <div class="order__edit-quantity-container">
+                        <label for="order__input-quantity">Quanity:</label>
+                        <input
+                          type="number"
+                          name="order__input-quantity"
+                          id="order__input-quantity"
+                          class="order__edit-quantity"
+                          value="1"
+                          min="1"
+                        />
+                        <button class="order__remove">Remove</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="delivery">
+                    <h4 class="delivery__title">Choose a delivery option</h4>
+                    <!--  -->
+                    <div class="delivery__option">
+                      <input
+                        type="radio"
+                        name="delivery__input-radio"
+                        id="delivery__input-1"
+                        checked
+                      />
+                      <label for="delivery__input-1" class="delivery__label">
+                        <p class="delivery__label-date">Tuesday, July 8</p>
+                        <p class="delivery__label-price">FREE Shipping</p>
+                      </label>
+                    </div>
+                    <!--  -->
+                    <div class="delivery__option">
+                      <input
+                        type="radio"
+                        name="delivery__input-radio"
+                        id="delivery__input-2"
+                      />
+                      <label for="delivery__input-2" class="delivery__label">
+                        <p class="delivery__label-date">Wednesday, July 2</p>
+                        <p class="delivery__label-price">₱4.99 - Shipping</p>
+                      </label>
+                    </div>
+                    <!--  -->
+                    <div class="delivery__option">
+                      <input
+                        type="radio"
+                        name="delivery__input-radio"
+                        id="delivery__input-3"
+                      />
+                      <label for="delivery__input-3" class="delivery__label">
+                        <p class="delivery__label-date">Monday, June 30</p>
+                        <p class="delivery__label-price">₱9.99 - Shipping</p>
+                      </label>
+                    </div>
+                    <!--  -->
+                  </div>
+                </div>
+              </div>
+            </template>
+          </section>
           <!-- SUMMARY -->
           <section class="summary">
             <h4 class="summary__header">Order Summary</h4>

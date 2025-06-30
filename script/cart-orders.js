@@ -1,13 +1,20 @@
-import { cart } from "./cart.js";
-import { renderCartQuantity } from "./render-html.js";
+import { cart, renderCartQuantity } from "./cart.js";
+import { products } from "./products.js";
+import { renderCartItem } from "./render-html.js";
 
-totalCartQuantity();
+renderCartQuantity();
+matchingProductCart();
 
-export function totalCartQuantity() {
-  let quantity = 0;
-  cart.forEach((cartQuantity) => {
-    quantity += cartQuantity.quantity;
-    console.log(cartQuantity.quantity);
+function matchingProductCart() {
+  products.forEach((productItem) => {
+    cart.forEach((cartItem) => {
+      if (productItem.id === cartItem.id) {
+        renderCartItem(productItem, cartItem);
+      }
+    });
   });
-  renderCartQuantity(quantity);
 }
+
+document.querySelectorAll(".order__edit-quantity").forEach((inputQuantity) => {
+  inputQuantity.addEventListener("click", (event) => {});
+});

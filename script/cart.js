@@ -1,5 +1,3 @@
-import { products } from "./products.js";
-
 export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(productId) {
@@ -25,7 +23,7 @@ export function addToCart(productId) {
   saveCart();
 }
 
-function renderCartQuantity() {
+export function renderCartQuantity() {
   let cartQuantityEl = document.querySelector(".cart-quantity");
   let totalQuantity = 0;
   cart.forEach((item) => {

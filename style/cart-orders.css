@@ -155,6 +155,9 @@ header {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-m);
+  border: 1px solid black;
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-m);
 }
 
 #order__input-quantity {
@@ -176,7 +179,6 @@ header {
   color: var(--primary-accent);
 }
 
-.order-left,
 .summary {
   border: 1px solid black;
   border-radius: var(--border-radius-s);

@@ -5,7 +5,7 @@ export let products = [
     specs: "",
     brand: "Holcim",
     category: "Cement and Concrete Products",
-    priceInCents: 27550,
+    priceInCents: 30000,
     image: "assets/cement.jpg",
   },
   {

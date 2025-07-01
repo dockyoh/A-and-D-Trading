@@ -35,14 +35,18 @@ export function removeCartItem(cartId) {
 
 export function renderCartQuantity() {
   let cartQuantityEl = document.querySelector(".cart-quantity");
+  let checkOutItemsEl = document.querySelector(".checkout-title");
   let totalQuantity = 0;
   cart.forEach((item) => {
     totalQuantity += item.quantity;
   });
   if (totalQuantity === 0) {
     cartQuantityEl.textContent = "";
+    if (checkOutItemsEl) checkOutItemsEl.textContent = "";
   } else {
     cartQuantityEl.textContent = totalQuantity;
+    if (checkOutItemsEl)
+      checkOutItemsEl.textContent = `Checkout(${totalQuantity} item(s))`;
   }
 }
 

@@ -35,6 +35,9 @@ export function renderCartItem(productItem, cartItem) {
   clone
     .querySelector("#order__input-quantity")
     .setAttribute("data-cart-id", cartItem.id);
+  clone
+    .querySelector(".order__remove")
+    .setAttribute("data-remove-id", cartItem.id);
 
   orderLeftEl.appendChild(clone);
 }
@@ -79,7 +82,7 @@ function createElements(item) {
 
   brandEl.textContent = `${item.brand}`;
   nameEl.textContent = `${item.pName}`;
-  priceEl.textContent = `₱${formatPrice(item.priceInCents)}`;
+  priceEl.textContent = `${formatPrice(item.priceInCents)}`;
   decrementEl.textContent = "-";
   incrementEl.textContent = "+";
   addToCartEl.textContent = "Add to Cart";

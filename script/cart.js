@@ -1,3 +1,6 @@
+console.log("ALWAYS EXECUTE ON THE FIRST LINE (CART JS)");
+// import { matchingProductCart } from "./cart-orders.js"; // !ALERT THIS LINE OF CODE CAN GIVE YOU A HEADACHE!
+
 export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 renderCartQuantity();
@@ -21,6 +24,12 @@ export function addToCart(productId) {
       renderCartQuantity();
     }
   });
+  saveCart();
+}
+
+export function removeCartItem(cartId) {
+  const indexToRemove = cart.findIndex((cartObj) => cartObj.id === cartId);
+  cart.splice(indexToRemove, 1);
   saveCart();
 }
 

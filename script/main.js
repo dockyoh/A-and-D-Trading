@@ -3,8 +3,8 @@ import { getInputs, setInputs } from "./inputs-logic.js";
 import { renderProducts } from "./render-html.js";
 import { searchProduct } from "./shop.js";
 
-renderProducts();
 renderCartQuantity();
+renderProducts();
 
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();

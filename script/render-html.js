@@ -24,11 +24,21 @@ export function renderCartItem(productItem, cartItem) {
   const template = document.querySelector("#order-item-template");
   const clone = template.content.cloneNode(true);
 
-  // clone
-  //   .querySelector(".order-item-container")
-  //   .setAttribute("class", `order__item-${cartItem.id}`);
   const addClass = clone.querySelector(".order-item-container");
   addClass.classList.add(`order__item-${cartItem.id}`);
+
+  clone.querySelector("#delivery__input-1").id = `delivery__input-1-${cartItem.id}`;
+  clone.querySelector("#delivery__input-2").id = `delivery__input-2-${cartItem.id}`;
+  clone.querySelector("#delivery__input-3").id = `delivery__input-3-${cartItem.id}`;
+
+  clone.querySelector(`#delivery__input-1-${cartItem.id}`).name = `delivery__input-radio-${cartItem.id}`;
+  clone.querySelector(`#delivery__input-2-${cartItem.id}`).name = `delivery__input-radio-${cartItem.id}`;
+  clone.querySelector(`#delivery__input-3-${cartItem.id}`).name = `delivery__input-radio-${cartItem.id}`;
+
+  clone.querySelector("#label-1").setAttribute("for",`delivery__input-1-${cartItem.id}`);
+  clone.querySelector("#label-2").setAttribute("for",`delivery__input-2-${cartItem.id}`);
+  clone.querySelector("#label-3").setAttribute("for",`delivery__input-3-${cartItem.id}`);
+  
   clone.querySelector(".order-item-date").textContent =
     "Delivery date: Tuesday, July 8";
   clone.querySelector(".order-item-image").src = productItem.image;

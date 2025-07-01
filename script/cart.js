@@ -1,5 +1,7 @@
 export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+renderCartQuantity();
+
 export function addToCart(productId) {
   const matchingItem = cart.find((item) => item.id === productId);
 
@@ -16,7 +18,6 @@ export function addToCart(productId) {
         const matchingIndex = cart.indexOf(matchingItem);
         cart[matchingIndex].quantity += quantity;
       }
-      console.log(cart);
       renderCartQuantity();
     }
   });
@@ -42,10 +43,6 @@ export function editOrderQuantity(cartId, value) {
       cartItem.quantity = value;
       saveCart();
       renderCartQuantity();
-      console.log(
-        `CART QUANTITY : ${cartItem.quantity}, INPUT VALUE: ${value}`
-      );
     }
   });
-  console.log(cart);
 }

@@ -91,6 +91,18 @@ header .navbar-right img {
   gap: var(--spacing-s);
 }
 
+#cart {
+  position: relative;
+}
+
+.cart-quantity {
+  position: absolute;
+  top: -11px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
 /* HERO SECTION */
 .hero-section {
   width: 100%;

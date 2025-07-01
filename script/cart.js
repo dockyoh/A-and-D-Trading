@@ -42,7 +42,7 @@ export function renderCartQuantity() {
   });
   if (totalQuantity === 0) {
     cartQuantityEl.textContent = "";
-    if (checkOutItemsEl) checkOutItemsEl.textContent = "";
+    if (checkOutItemsEl) checkOutItemsEl.textContent = "Cart is empty";
   } else {
     cartQuantityEl.textContent = totalQuantity;
     if (checkOutItemsEl)

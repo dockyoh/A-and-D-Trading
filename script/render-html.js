@@ -24,9 +24,11 @@ export function renderCartItem(productItem, cartItem) {
   const template = document.querySelector("#order-item-template");
   const clone = template.content.cloneNode(true);
 
-  clone
-    .querySelector(".order-item-container")
-    .setAttribute("class", `order__item-${cartItem.id}`);
+  // clone
+  //   .querySelector(".order-item-container")
+  //   .setAttribute("class", `order__item-${cartItem.id}`);
+  const addClass = clone.querySelector(".order-item-container");
+  addClass.classList.add(`order__item-${cartItem.id}`);
   clone.querySelector(".order-item-date").textContent =
     "Delivery date: Tuesday, July 8";
   clone.querySelector(".order-item-image").src = productItem.image;

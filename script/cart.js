@@ -35,3 +35,17 @@ export function renderCartQuantity() {
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+export function editOrderQuantity(cartId, value) {
+  cart.forEach((cartItem) => {
+    if (cartItem.id === cartId) {
+      cartItem.quantity = value;
+      saveCart();
+      renderCartQuantity();
+      console.log(
+        `CART QUANTITY : ${cartItem.quantity}, INPUT VALUE: ${value}`
+      );
+    }
+  });
+  console.log(cart);
+}

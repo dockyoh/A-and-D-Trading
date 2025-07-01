@@ -32,6 +32,9 @@ export function renderCartItem(productItem, cartItem) {
     productItem.priceInCents
   );
   clone.querySelector("#order__input-quantity").value = cartItem.quantity;
+  clone
+    .querySelector("#order__input-quantity")
+    .setAttribute("data-cart-id", cartItem.id);
 
   orderLeftEl.appendChild(clone);
 }

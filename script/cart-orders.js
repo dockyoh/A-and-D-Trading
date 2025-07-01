@@ -1,4 +1,9 @@
-import { cart, renderCartQuantity } from "./cart.js";
+import {
+  addToCart,
+  cart,
+  editOrderQuantity,
+  renderCartQuantity,
+} from "./cart.js";
 import { products } from "./products.js";
 import { renderCartItem } from "./render-html.js";
 
@@ -16,5 +21,10 @@ function matchingProductCart() {
 }
 
 document.querySelectorAll(".order__edit-quantity").forEach((inputQuantity) => {
-  inputQuantity.addEventListener("click", (event) => {});
+  inputQuantity.addEventListener("input", (event) => {
+    event.preventDefault();
+    console.log(inputQuantity.dataset.cartId);
+    const cartId = inputQuantity.dataset.cartId;
+    editOrderQuantity(cartId, Number(inputQuantity.value));
+  });
 });

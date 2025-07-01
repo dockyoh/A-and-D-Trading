@@ -39,7 +39,11 @@ export function renderCartQuantity() {
   cart.forEach((item) => {
     totalQuantity += item.quantity;
   });
-  cartQuantityEl.textContent = totalQuantity;
+  if (totalQuantity === 0) {
+    cartQuantityEl.textContent = "";
+  } else {
+    cartQuantityEl.textContent = totalQuantity;
+  }
 }
 
 function saveCart() {

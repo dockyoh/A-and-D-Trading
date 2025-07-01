@@ -6,12 +6,12 @@ import {
   renderCartQuantity,
 } from "./cart.js";
 import { products } from "./products.js";
-import { renderCartItem } from "./render-html.js";
+import { removeItemElement, renderCartItem } from "./render-html.js";
 
 renderCartQuantity();
 matchingProductCart();
 
-export function matchingProductCart() {
+function matchingProductCart() {
   products.forEach((productItem) => {
     cart.forEach((cartItem) => {
       if (productItem.id === cartItem.id) {
@@ -31,7 +31,8 @@ document.querySelectorAll(".order__edit-quantity").forEach((inputQuantity) => {
 
 document.querySelectorAll(".order__remove").forEach((remove) => {
   remove.addEventListener("click", (event) => {
-    console.log(`REMOVE ID: ${remove.dataset.removeId}`);
     removeCartItem(remove.dataset.removeId);
+    removeItemElement(remove.dataset.removeId);
+    renderCartQuantity();
   });
 });

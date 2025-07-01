@@ -24,6 +24,9 @@ export function renderCartItem(productItem, cartItem) {
   const template = document.querySelector("#order-item-template");
   const clone = template.content.cloneNode(true);
 
+  clone
+    .querySelector(".order-item-container")
+    .setAttribute("class", `order__item-${cartItem.id}`);
   clone.querySelector(".order-item-date").textContent =
     "Delivery date: Tuesday, July 8";
   clone.querySelector(".order-item-image").src = productItem.image;
@@ -40,6 +43,11 @@ export function renderCartItem(productItem, cartItem) {
     .setAttribute("data-remove-id", cartItem.id);
 
   orderLeftEl.appendChild(clone);
+}
+
+export function removeItemElement(removeId) {
+  const itemToRemove = document.querySelector(`.order__item-${removeId}`);
+  itemToRemove.remove();
 }
 
 function createElements(item) {

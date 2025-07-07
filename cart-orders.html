@@ -151,44 +151,23 @@
                   </div>
                   <div class="delivery">
                     <h4 class="delivery__title">Choose a delivery option</h4>
-                    <!--  -->
-                    <div class="delivery__option">
-                      <input
-                        type="radio"
-                        name="delivery__input-radio"
-                        id="delivery__input-1"
-                        checked
-                      />
-                      <label id="label-1" for="delivery__input-1" class="delivery__label">
-                        <p class="delivery__label-date">Tuesday, July 8</p>
-                        <p class="delivery__label-price">FREE Shipping</p>
-                      </label>
+                    <!-- DELIVERY OPTION PLACEHOLDER -->
+                    <div class="delivery__option-placeholder">
+                      <!-- DELIVERY OPTION TEMPLATE -->
+                      <template id="delivery__option-template">
+                        <div class="delivery__option">
+                          <input
+                            type="radio"
+                            name="delivery__input-radio"
+                            id="delivery__input"
+                          />
+                          <label for="delivery__input" class="delivery__label">
+                            <p class="delivery__label-date">Tuesday, July 8</p>
+                            <p class="delivery__label-price">FREE Shipping</p>
+                          </label>
+                        </div>
+                      </template>
                     </div>
-                    <!--  -->
-                    <div class="delivery__option">
-                      <input
-                        type="radio"
-                        name="delivery__input-radio"
-                        id="delivery__input-2"
-                      />
-                      <label id="label-2" for="delivery__input-2" class="delivery__label">
-                        <p class="delivery__label-date">Wednesday, July 2</p>
-                        <p class="delivery__label-price">₱4.99 - Shipping</p>
-                      </label>
-                    </div>
-                    <!--  -->
-                    <div class="delivery__option">
-                      <input
-                        type="radio"
-                        name="delivery__input-radio"
-                        id="delivery__input-3"
-                      />
-                      <label id="label-3" for="delivery__input-3" class="delivery__label">
-                        <p class="delivery__label-date">Monday, June 30</p>
-                        <p class="delivery__label-price">₱9.99 - Shipping</p>
-                      </label>
-                    </div>
-                    <!--  -->
                   </div>
                 </div>
               </div>

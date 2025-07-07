@@ -1,9 +1,11 @@
+import { cart } from "./cart.js";
 import { formatPrice } from "./currency-formater.js";
+import { getDeliveryDate } from "./date-logic.js";
+import { deliveryOption, getShippingPrice } from "./delivery-option.js";
 import { products } from "./products.js";
 import { searchResult } from "./shop.js";
 
 const gridContainerEl = document.querySelector(".product-grid-container");
-const orderLeftEl = document.querySelector(".order-left");
 
 export function renderProducts() {
   products.map((item) => {
@@ -15,46 +17,99 @@ export function renderSearchResult() {
   gridContainerEl.innerHTML = "";
 
   searchResult.map((item) => {
-    console.log(item);
     createElements(item);
   });
 }
 
 export function renderCartItem(productItem, cartItem) {
-  const template = document.querySelector("#order-item-template");
-  const clone = template.content.cloneNode(true);
+  const orderLeftEl = document.querySelector(".order-left");
 
-  const addClass = clone.querySelector(".order-item-container");
-  addClass.classList.add(`order__item-${cartItem.id}`);
+  const orderItemTemplate = document.getElementById("order-item-template");
+  const orderItemContent = orderItemTemplate.content.cloneNode(true);
 
-  clone.querySelector("#delivery__input-1").id = `delivery__input-1-${cartItem.id}`;
-  clone.querySelector("#delivery__input-2").id = `delivery__input-2-${cartItem.id}`;
-  clone.querySelector("#delivery__input-3").id = `delivery__input-3-${cartItem.id}`;
-
-  clone.querySelector(`#delivery__input-1-${cartItem.id}`).name = `delivery__input-radio-${cartItem.id}`;
-  clone.querySelector(`#delivery__input-2-${cartItem.id}`).name = `delivery__input-radio-${cartItem.id}`;
-  clone.querySelector(`#delivery__input-3-${cartItem.id}`).name = `delivery__input-radio-${cartItem.id}`;
-
-  clone.querySelector("#label-1").setAttribute("for",`delivery__input-1-${cartItem.id}`);
-  clone.querySelector("#label-2").setAttribute("for",`delivery__input-2-${cartItem.id}`);
-  clone.querySelector("#label-3").setAttribute("for",`delivery__input-3-${cartItem.id}`);
-  
-  clone.querySelector(".order-item-date").textContent =
-    "Delivery date: Tuesday, July 8";
-  clone.querySelector(".order-item-image").src = productItem.image;
-  clone.querySelector(".order__item-name").textContent = productItem.pName;
-  clone.querySelector(".order__item-price").textContent = formatPrice(
-    productItem.priceInCents
+  const deliveryOptionPlaceholder = orderItemContent.querySelector(
+    ".delivery__option-placeholder"
   );
-  clone.querySelector("#order__input-quantity").value = cartItem.quantity;
-  clone
+
+  const orderItemContentEl = orderItemContent.querySelector(
+    ".order-item-container"
+  );
+  orderItemContentEl.classList.add(`order__item-${cartItem.id}`);
+
+  orderItemContent.querySelector(".order-item-date").textContent =
+    "Delivery date: Tuesday, July 8";
+  orderItemContent.querySelector(".order-item-image").src = productItem.image;
+  orderItemContent.querySelector(".order__item-name").textContent =
+    productItem.pName;
+  orderItemContent.querySelector(".order__item-price").textContent =
+    formatPrice(productItem.priceInCents);
+  orderItemContent.querySelector("#order__input-quantity").value =
+    cartItem.quantity;
+  orderItemContent
     .querySelector("#order__input-quantity")
     .setAttribute("data-cart-id", cartItem.id);
-  clone
+  orderItemContent
     .querySelector(".order__remove")
     .setAttribute("data-remove-id", cartItem.id);
 
-  orderLeftEl.appendChild(clone);
+  orderLeftEl.appendChild(orderItemContent);
+
+  const deliveryOptionTemplate = document.getElementById(
+    "delivery__option-template"
+  );
+
+  renderDeliveryOption(
+    deliveryOptionPlaceholder,
+    deliveryOptionTemplate,
+    cartItem
+  );
+}
+
+export function renderDeliveryOption(
+  optionPlaceholder,
+  optionTemplate,
+  cartItem
+) {
+  deliveryOption.forEach((option) => {
+    const optionTemplateContent = optionTemplate.content.cloneNode(true);
+    console.log("Template content:", optionTemplateContent.innerHTML);
+    console.log(
+      "INPUTS",
+      optionTemplateContent.querySelector(`#delivery__input`)
+    );
+    console.log(
+      "LABEL",
+      optionTemplateContent.querySelector(`.delivery__js-label`)
+    );
+
+    const inputs = optionTemplateContent.querySelector(`#delivery__input`);
+    // const labels = optionTemplateContent.querySelector(".delivery__js-label");
+
+    if (!inputs) {
+      console.error("Missing delivery input(s) and label(s) in template");
+      return;
+    }
+
+    optionTemplateContent
+      .querySelector(`#delivery__input`)
+      .setAttribute("id", `delivery__input-${option.id}-${cartItem.id}`);
+
+    optionTemplateContent
+      .querySelector(`#delivery__input-${option.id}-${cartItem.id}`)
+      .setAttribute("name", `delivery__input-radio-${cartItem.id}`);
+
+    optionTemplateContent
+      .querySelector("label")
+      .setAttribute("for", `delivery__input-${option.id}-${cartItem.id}`);
+
+    optionTemplateContent.querySelector(".delivery__label-date").textContent =
+      getDeliveryDate(option.deliveryDate);
+
+    optionTemplateContent.querySelector(".delivery__label-price").textContent =
+      getShippingPrice(option.deliveryPriceInCents);
+
+    optionPlaceholder.appendChild(optionTemplateContent);
+  });
 }
 
 export function removeItemElement(removeId) {

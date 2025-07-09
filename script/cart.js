@@ -16,6 +16,7 @@ export function addToCart(productId) {
         cart.push({
           id: productId,
           quantity: quantity,
+          deliveryOptionId: "1",
         });
       } else {
         const matchingIndex = cart.indexOf(matchingItem);
@@ -25,6 +26,15 @@ export function addToCart(productId) {
     }
   });
   saveCart();
+}
+
+export function addDeliveryId(productId, deliveryId) {
+  const matchingItem = cart.find((item) => item.id === productId);
+  const matchingIndex = cart.indexOf(matchingItem);
+  cart[matchingIndex].deliveryOptionId = deliveryId;
+
+  saveCart();
+  console.log(cart);
 }
 
 export function removeCartItem(cartId) {

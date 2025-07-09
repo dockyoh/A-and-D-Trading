@@ -1,15 +1,22 @@
 console.log("ALWAYS EXECUTE ON THE FIRST LINE (CART ORDERS JS)");
 import {
+  addDeliveryId,
   cart,
   editOrderQuantity,
   removeCartItem,
   renderCartQuantity,
 } from "./cart.js";
+import { deliveryOption } from "./delivery-option.js";
 import { products } from "./products.js";
-import { removeItemElement, renderCartItem } from "./render-html.js";
+import {
+  removeItemElement,
+  renderCartItem,
+  renderDeliveryDate,
+} from "./render-html.js";
 
 renderCartQuantity();
 matchingProductCart();
+console.log(cart);
 
 function matchingProductCart() {
   products.forEach((productItem) => {
@@ -34,5 +41,18 @@ document.querySelectorAll(".order__remove").forEach((remove) => {
     removeCartItem(remove.dataset.removeId);
     removeItemElement(remove.dataset.removeId);
     renderCartQuantity();
+  });
+});
+
+document.querySelectorAll("input").forEach((inputRadio) => {
+  inputRadio.addEventListener("click", (event) => {
+    const deliveryId = inputRadio.dataset.deliveryId;
+    const cartId = inputRadio.dataset.cartId;
+    addDeliveryId(cartId, deliveryId);
+    deliveryOption.forEach((option) => {
+      if (option.id === deliveryId) {
+        renderDeliveryDate(cartId, option);
+      }
+    });
   });
 });

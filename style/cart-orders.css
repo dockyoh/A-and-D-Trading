@@ -160,6 +160,10 @@ header {
   padding: var(--spacing-m);
 }
 
+.order-item-container h3 {
+  color: var(--primary-accent);
+}
+
 #order__input-quantity {
   padding: var(--spacing-xs) 0;
   width: 50px;
@@ -173,10 +177,6 @@ header {
   background-color: rgba(255, 255, 255, 0);
   cursor: pointer;
   border-bottom: 1px solid var(--light-color);
-}
-
-.order-item-date {
-  color: var(--primary-accent);
 }
 
 .summary {
@@ -240,7 +240,6 @@ header {
 .delivery {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-s);
   width: 50%;
 }
 
@@ -252,6 +251,7 @@ header {
 .delivery__option {
   display: flex;
   gap: var(--spacing-s);
+  margin-top: var(--spacing-s);
 }
 
 .delivery__option * {
@@ -265,9 +265,6 @@ header {
 
 .delivery__label-price {
   color: var(--light-color);
-}
-
-.delivery__option-placeholder {
 }
 
 /* SUMMARY */

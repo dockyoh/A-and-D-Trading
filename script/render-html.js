@@ -34,10 +34,13 @@ export function renderCartItem(productItem, cartItem) {
   const orderItemContentEl = orderItemContent.querySelector(
     ".order-item-container"
   );
+
   orderItemContentEl.classList.add(`order__item-${cartItem.id}`);
 
-  orderItemContent.querySelector(".order-item-date").textContent =
-    "Delivery date: Tuesday, July 8";
+  orderItemContent
+    .querySelector(".order-item-date")
+    .setAttribute("class", `order-item-date-${cartItem.id}`);
+
   orderItemContent.querySelector(".order-item-image").src = productItem.image;
   orderItemContent.querySelector(".order__item-name").textContent =
     productItem.pName;
@@ -72,20 +75,14 @@ export function renderDeliveryOption(
 ) {
   deliveryOption.forEach((option) => {
     const optionTemplateContent = optionTemplate.content.cloneNode(true);
-    console.log("Template content:", optionTemplateContent.innerHTML);
-    console.log(
-      "INPUTS",
-      optionTemplateContent.querySelector(`#delivery__input`)
-    );
-    console.log(
-      "LABEL",
-      optionTemplateContent.querySelector(`.delivery__js-label`)
-    );
 
     const inputs = optionTemplateContent.querySelector(`#delivery__input`);
-    // const labels = optionTemplateContent.querySelector(".delivery__js-label");
+    const labels = optionTemplateContent.querySelector("label");
 
-    if (!inputs) {
+    inputs.setAttribute("data-cart-id", `${cartItem.id}`);
+    inputs.setAttribute("data-delivery-id", `${option.id}`);
+
+    if ((!inputs, !labels)) {
       console.error("Missing delivery input(s) and label(s) in template");
       return;
     }
@@ -98,9 +95,15 @@ export function renderDeliveryOption(
       .querySelector(`#delivery__input-${option.id}-${cartItem.id}`)
       .setAttribute("name", `delivery__input-radio-${cartItem.id}`);
 
+    renderCheckedRadio(cartItem, option, optionTemplateContent);
+
     optionTemplateContent
       .querySelector("label")
       .setAttribute("for", `delivery__input-${option.id}-${cartItem.id}`);
+
+    optionTemplateContent
+      .querySelector("label")
+      .classList.add(`delivery__label-${option.id}`);
 
     optionTemplateContent.querySelector(".delivery__label-date").textContent =
       getDeliveryDate(option.deliveryDate);
@@ -110,6 +113,21 @@ export function renderDeliveryOption(
 
     optionPlaceholder.appendChild(optionTemplateContent);
   });
+}
+
+export function renderCheckedRadio(cartItem, option, optionTemplateContent) {
+  if (cartItem.deliveryOptionId === option.id) {
+    optionTemplateContent.querySelector(
+      `#delivery__input-${option.id}-${cartItem.id}`
+    ).checked = true;
+    renderDeliveryDate(cartItem.id, option);
+  }
+}
+
+export function renderDeliveryDate(inputId, deliveryOption) {
+  const orderDateHeader = document.querySelector(`.order-item-date-${inputId}`);
+  const days = deliveryOption.deliveryDate;
+  orderDateHeader.textContent = `Delivery date: ${getDeliveryDate(days)}`;
 }
 
 export function removeItemElement(removeId) {

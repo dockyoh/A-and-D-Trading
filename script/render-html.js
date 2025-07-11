@@ -52,6 +52,9 @@ export function renderCartItem(productItem, cartItem) {
     .querySelector("#order__input-quantity")
     .setAttribute("data-cart-id", cartItem.id);
   orderItemContent
+    .querySelector("#order__input-quantity")
+    .setAttribute("data-delivery-id", "1");
+  orderItemContent
     .querySelector(".order__remove")
     .setAttribute("data-remove-id", cartItem.id);
 

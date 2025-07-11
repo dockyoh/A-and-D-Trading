@@ -7,6 +7,7 @@ import {
   renderCartQuantity,
 } from "./cart.js";
 import { deliveryOption } from "./delivery-option.js";
+import { renderOrderSummary, renderSummaryHTML } from "./order-summary.js";
 import { products } from "./products.js";
 import {
   removeItemElement,
@@ -16,6 +17,7 @@ import {
 
 renderCartQuantity();
 matchingProductCart();
+renderOrderSummary();
 console.log(cart);
 
 function matchingProductCart() {

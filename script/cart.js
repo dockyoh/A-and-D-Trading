@@ -1,3 +1,5 @@
+import { renderSummaryHTML, updateSummaryHTML } from "./order-summary.js";
+
 console.log("ALWAYS EXECUTE ON THE FIRST LINE (CART JS)");
 // import { matchingProductCart } from "./cart-orders.js"; // !ALERT THIS LINE OF CODE CAN GIVE YOU A HEADACHE!
 
@@ -32,6 +34,7 @@ export function addDeliveryId(productId, deliveryId) {
   const matchingItem = cart.find((item) => item.id === productId);
   const matchingIndex = cart.indexOf(matchingItem);
   cart[matchingIndex].deliveryOptionId = deliveryId;
+  setDeliveryOption(productId, deliveryId);
 
   saveCart();
   console.log(cart);
@@ -46,10 +49,10 @@ export function removeCartItem(cartId) {
 export function renderCartQuantity() {
   let cartQuantityEl = document.querySelector(".cart-quantity");
   let checkOutItemsEl = document.querySelector(".checkout-title");
-  let totalQuantity = 0;
-  cart.forEach((item) => {
-    totalQuantity += item.quantity;
-  });
+  let totalQuantity = getTotalItems();
+  // cart.forEach((item) => {
+  //   totalQuantity += item.quantity;
+  // });
   if (totalQuantity === 0) {
     cartQuantityEl.textContent = "";
     if (checkOutItemsEl) checkOutItemsEl.textContent = "Cart is empty";
@@ -60,6 +63,14 @@ export function renderCartQuantity() {
   }
 }
 
+export function getTotalItems() {
+  let total = 0;
+  cart.forEach((item) => {
+    total += item.quantity;
+  });
+  return total;
+}
+
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
@@ -68,8 +79,21 @@ export function editOrderQuantity(cartId, value) {
   cart.forEach((cartItem) => {
     if (cartItem.id === cartId) {
       cartItem.quantity = value;
+      console.log("Edit Order Quantity", cartItem.id);
       saveCart();
       renderCartQuantity();
     }
   });
+}
+
+export function setDeliveryOption(productId, deliveryId) {
+  document
+    .querySelectorAll("#order__input-quantity")
+    .forEach((inputQuantity) => {
+      console.log(deliveryId);
+      const inputId = inputQuantity.dataset.cartId;
+      if (inputId === productId) {
+        inputQuantity.dataset.deliveryId = deliveryId;
+      }
+    });
 }

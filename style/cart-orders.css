@@ -179,21 +179,15 @@ header {
   border-bottom: 1px solid var(--light-color);
 }
 
-.summary {
-  border: 1px solid black;
-  border-radius: var(--border-radius-s);
-  padding: var(--spacing-m);
+.summary__placeholder {
+  width: 35%;
 }
 
 .order-left {
-  width: 75%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-m);
-}
-
-.summary {
-  width: 25%;
 }
 
 .order-item-wrapper {
@@ -273,7 +267,10 @@ header {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--spacing-s);
-  width: 40%;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: var(--border-radius-s);
+  padding: var(--spacing-m);
 }
 
 .summary__description {

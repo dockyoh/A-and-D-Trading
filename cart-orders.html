@@ -142,6 +142,7 @@
                           name="order__input-quantity"
                           id="order__input-quantity"
                           class="order__edit-quantity"
+                          data-delivery-id=""
                           value="1"
                           min="1"
                         />
@@ -176,33 +177,37 @@
             </template>
           </section>
           <!-- SUMMARY -->
-          <template id="summary-template">
-            <section class="summary">
-              <h4 class="summary__header">Order Summary</h4>
-              <div class="summary__description">
-                <p class="summary__items">Items(4)</p>
-                <span class="summary__items-price">₱60.23</span>
-              </div>
-              <div class="summary__description summary__description--shipping">
-                <p class="summary__shipping">Shipping & handling</p>
-                <span class="summary__shipping-price">₱0.00</span>
-              </div>
-              <div class="summary__description">
-                <p class="summary__before-tax">Total before tax</p>
-                <span class="summary__before-tax-price">₱60.23</span>
-              </div>
-              <div class="summary__description summary__bottom--border">
-                <p class="summary__estimated-tax">Estimated tax (10%)</p>
-                <span class="summary__estimated-tax-price">₱6.02</span>
-              </div>
-              <div class="summary__description summary__description--total">
-                <p class="summary__total">Order total</p>
-                <span class="summary__total-price">₱66.25</span>
-              </div>
-              <button class="summary__place-order">Place your order</button>
-            </section>
-          </template>
-          <section class="summary">
+          <div class="summary__placeholder">
+            <template id="summary__template">
+              <section class="summary">
+                <h4 class="summary__header">Order Summary</h4>
+                <div class="summary__description">
+                  <p class="summary__items">Items(4)</p>
+                  <span class="summary__items-price">₱60.23</span>
+                </div>
+                <div
+                  class="summary__description summary__description--shipping"
+                >
+                  <p class="summary__shipping">Shipping & handling</p>
+                  <span class="summary__shipping-price">₱0.00</span>
+                </div>
+                <div class="summary__description">
+                  <p class="summary__before-tax">Total before tax</p>
+                  <span class="summary__before-tax-price">₱60.23</span>
+                </div>
+                <div class="summary__description summary__bottom--border">
+                  <p class="summary__estimated-tax">Estimated tax (10%)</p>
+                  <span class="summary__estimated-tax-price">₱6.02</span>
+                </div>
+                <div class="summary__description summary__description--total">
+                  <p class="summary__total">Order total</p>
+                  <span class="summary__total-price">₱66.25</span>
+                </div>
+                <button class="summary__place-order">Place your order</button>
+              </section>
+            </template>
+          </div>
+          <!-- <section class="summary">
             <h4 class="summary__header">Order Summary</h4>
             <div class="summary__description">
               <p class="summary__items">Items(4)</p>
@@ -225,7 +230,7 @@
               <span class="summary__total-price">₱66.25</span>
             </div>
             <button class="summary__place-order">Place your order</button>
-          </section>
+          </section> -->
         </div>
       </section>
     </main>

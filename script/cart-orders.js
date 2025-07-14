@@ -6,8 +6,15 @@ import {
   removeCartItem,
   renderCartQuantity,
 } from "./cart.js";
+import { formatPrice } from "./currency-formater.js";
 import { deliveryOption } from "./delivery-option.js";
-import { renderOrderSummary, renderSummaryHTML } from "./order-summary.js";
+import {
+  addShippingPrice,
+  calculateTotalPrice,
+  orderSummaryObj,
+  renderSummaryHTML,
+  updateSummaryContent,
+} from "./order-summary.js";
 import { products } from "./products.js";
 import {
   removeItemElement,
@@ -17,14 +24,18 @@ import {
 
 renderCartQuantity();
 matchingProductCart();
-renderOrderSummary();
+calculateTotalPrice();
+renderSummaryHTML();
 console.log(cart);
+// console.log(formatPrice(totalShippingPrice));
+console.log("Order Summary Object: ", orderSummaryObj);
 
 function matchingProductCart() {
   products.forEach((productItem) => {
     cart.forEach((cartItem) => {
       if (productItem.id === cartItem.id) {
         renderCartItem(productItem, cartItem);
+        addShippingPrice(cartItem);
       }
     });
   });
@@ -35,6 +46,8 @@ document.querySelectorAll(".order__edit-quantity").forEach((inputQuantity) => {
     event.preventDefault();
     const cartId = inputQuantity.dataset.cartId;
     editOrderQuantity(cartId, Number(inputQuantity.value));
+    calculateTotalPrice();
+    updateSummaryContent();
   });
 });
 
@@ -51,6 +64,7 @@ document.querySelectorAll("input").forEach((inputRadio) => {
     const deliveryId = inputRadio.dataset.deliveryId;
     const cartId = inputRadio.dataset.cartId;
     addDeliveryId(cartId, deliveryId);
+    updateSummaryContent();
     deliveryOption.forEach((option) => {
       if (option.id === deliveryId) {
         renderDeliveryDate(cartId, option);

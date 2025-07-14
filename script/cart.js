@@ -1,5 +1,3 @@
-import { renderSummaryHTML, updateSummaryHTML } from "./order-summary.js";
-
 console.log("ALWAYS EXECUTE ON THE FIRST LINE (CART JS)");
 // import { matchingProductCart } from "./cart-orders.js"; // !ALERT THIS LINE OF CODE CAN GIVE YOU A HEADACHE!
 

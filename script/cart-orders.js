@@ -12,6 +12,7 @@ import {
   addShippingPrice,
   calculateTotalPrice,
   orderSummaryObj,
+  reAddShippingPrice,
   renderSummaryHTML,
   updateSummaryContent,
 } from "./order-summary.js";
@@ -27,15 +28,17 @@ matchingProductCart();
 calculateTotalPrice();
 renderSummaryHTML();
 console.log(cart);
-// console.log(formatPrice(totalShippingPrice));
-console.log("Order Summary Object: ", orderSummaryObj);
+console.log(
+  "Order Summary Total Shipping: ",
+  orderSummaryObj[0].totalShippingPrice
+);
 
 function matchingProductCart() {
   products.forEach((productItem) => {
     cart.forEach((cartItem) => {
       if (productItem.id === cartItem.id) {
         renderCartItem(productItem, cartItem);
-        addShippingPrice(cartItem);
+        addShippingPrice(cartItem.deliveryOptionId);
       }
     });
   });
@@ -64,6 +67,7 @@ document.querySelectorAll("input").forEach((inputRadio) => {
     const deliveryId = inputRadio.dataset.deliveryId;
     const cartId = inputRadio.dataset.cartId;
     addDeliveryId(cartId, deliveryId);
+    reAddShippingPrice();
     updateSummaryContent();
     deliveryOption.forEach((option) => {
       if (option.id === deliveryId) {

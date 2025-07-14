@@ -33,7 +33,6 @@ export function addDeliveryId(productId, deliveryId) {
   const matchingIndex = cart.indexOf(matchingItem);
   cart[matchingIndex].deliveryOptionId = deliveryId;
   setDeliveryOption(productId, deliveryId);
-
   saveCart();
   console.log(cart);
 }

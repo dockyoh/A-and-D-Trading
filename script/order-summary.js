@@ -39,7 +39,9 @@ export function renderSummaryHTML() {
     orderSummaryObj[0].totalPrice
   );
 
-  content.querySelector(".summary__shipping-price");
+  content.querySelector(".summary__shipping-price").textContent = formatPrice(
+    orderSummaryObj[0].totalShippingPrice
+  );
 
   content.querySelector(".summary__before-tax-price");
 
@@ -51,6 +53,7 @@ export function updateSummaryContent() {
   console.log("updateSummaryContent is called");
   console.log("Order Summary Element: ", orderSummaryEl);
   console.log("Order Summary Object: ", orderSummaryObj);
+  console.log("Shipping Price: ", orderSummaryObj[0].totalShippingPrice);
 
   orderSummaryEl.querySelector(".summary__items-price").textContent =
     formatPrice(orderSummaryObj[0].totalPrice);
@@ -58,18 +61,31 @@ export function updateSummaryContent() {
   orderSummaryEl.querySelector(
     ".summary__items"
   ).textContent = `Items(${getTotalItems()})`;
+
+  orderSummaryEl.querySelector(".summary__shipping-price").textContent =
+    formatPrice(orderSummaryObj[0].totalShippingPrice);
 }
 
-export function addShippingPrice(cartItem) {
+export function addShippingPrice(cartItemId) {
   const matchingOption = deliveryOption.find(
-    (optionItem) => optionItem.id === cartItem.deliveryOptionId
+    (optionItem) => optionItem.id === cartItemId
   );
   const matchingIndex = deliveryOption.indexOf(matchingOption);
-  // totalShippingPrice += deliveryOption[matchingIndex].deliveryPriceInCents;
+  orderSummaryObj[0].totalShippingPrice +=
+    deliveryOption[matchingIndex].deliveryPriceInCents;
   console.log(
     "Shipping Price",
     deliveryOption[matchingIndex].deliveryPriceInCents
   );
-  // console.log("Total Shipping Price", totalShippingPrice);
-  // console.log("Total Before Tax: ", totalBeforeTax);
+}
+
+export function reAddShippingPrice() {
+  orderSummaryObj[0].totalShippingPrice = 0;
+  products.forEach((productItem) => {
+    cart.forEach((cartItem) => {
+      if (productItem.id === cartItem.id) {
+        addShippingPrice(cartItem.deliveryOptionId);
+      }
+    });
+  });
 }

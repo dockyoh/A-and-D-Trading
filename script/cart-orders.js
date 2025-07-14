@@ -10,8 +10,8 @@ import { formatPrice } from "./currency-formater.js";
 import { deliveryOption } from "./delivery-option.js";
 import {
   addShippingPrice,
+  calculateTotalBeforeTax,
   calculateTotalPrice,
-  orderSummaryObj,
   reAddShippingPrice,
   renderSummaryHTML,
   updateSummaryContent,
@@ -26,12 +26,8 @@ import {
 renderCartQuantity();
 matchingProductCart();
 calculateTotalPrice();
+calculateTotalBeforeTax();
 renderSummaryHTML();
-console.log(cart);
-console.log(
-  "Order Summary Total Shipping: ",
-  orderSummaryObj[0].totalShippingPrice
-);
 
 function matchingProductCart() {
   products.forEach((productItem) => {
@@ -50,6 +46,7 @@ document.querySelectorAll(".order__edit-quantity").forEach((inputQuantity) => {
     const cartId = inputQuantity.dataset.cartId;
     editOrderQuantity(cartId, Number(inputQuantity.value));
     calculateTotalPrice();
+    calculateTotalBeforeTax();
     updateSummaryContent();
   });
 });
@@ -68,6 +65,7 @@ document.querySelectorAll("input").forEach((inputRadio) => {
     const cartId = inputRadio.dataset.cartId;
     addDeliveryId(cartId, deliveryId);
     reAddShippingPrice();
+    calculateTotalBeforeTax();
     updateSummaryContent();
     deliveryOption.forEach((option) => {
       if (option.id === deliveryId) {

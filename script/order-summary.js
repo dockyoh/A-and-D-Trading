@@ -28,6 +28,12 @@ export function calculateTotalPrice() {
   });
 }
 
+export function calculateTotalBeforeTax() {
+  const totalBeforeTax =
+    orderSummaryObj[0].totalPrice + orderSummaryObj[0].totalShippingPrice;
+  orderSummaryObj[0].totalBeforeTax = totalBeforeTax;
+}
+
 export function renderSummaryHTML() {
   const template = document.querySelector("#summary__template");
   const content = template.content.cloneNode(true);
@@ -43,7 +49,9 @@ export function renderSummaryHTML() {
     orderSummaryObj[0].totalShippingPrice
   );
 
-  content.querySelector(".summary__before-tax-price");
+  content.querySelector(".summary__before-tax-price").textContent = formatPrice(
+    orderSummaryObj[0].totalBeforeTax
+  );
 
   placeHolderEl.appendChild(content);
   orderSummaryEl = placeHolderEl.querySelector(".summary");
@@ -64,6 +72,9 @@ export function updateSummaryContent() {
 
   orderSummaryEl.querySelector(".summary__shipping-price").textContent =
     formatPrice(orderSummaryObj[0].totalShippingPrice);
+
+  orderSummaryEl.querySelector(".summary__before-tax-price").textContent =
+    formatPrice(orderSummaryObj[0].totalBeforeTax);
 }
 
 export function addShippingPrice(cartItemId) {

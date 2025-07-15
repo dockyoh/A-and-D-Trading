@@ -55,6 +55,9 @@ document.querySelectorAll(".order__remove").forEach((remove) => {
   remove.addEventListener("click", (event) => {
     removeCartItem(remove.dataset.removeId);
     removeItemElement(remove.dataset.removeId);
+    calculateTotalPrice();
+    calculateTotalBeforeTax();
+    updateSummaryContent();
     renderCartQuantity();
   });
 });

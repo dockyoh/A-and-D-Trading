@@ -1,3 +1,5 @@
+import { removeShippingPrice } from "./order-summary.js";
+
 console.log("ALWAYS EXECUTE ON THE FIRST LINE (CART JS)");
 // import { matchingProductCart } from "./cart-orders.js"; // !ALERT THIS LINE OF CODE CAN GIVE YOU A HEADACHE!
 
@@ -38,6 +40,7 @@ export function addDeliveryId(productId, deliveryId) {
 }
 
 export function removeCartItem(cartId) {
+  removeShippingPrice(cartId);
   const indexToRemove = cart.findIndex((cartObj) => cartObj.id === cartId);
   cart.splice(indexToRemove, 1);
   saveCart();
@@ -47,9 +50,6 @@ export function renderCartQuantity() {
   let cartQuantityEl = document.querySelector(".cart-quantity");
   let checkOutItemsEl = document.querySelector(".checkout-title");
   let totalQuantity = getTotalItems();
-  // cart.forEach((item) => {
-  //   totalQuantity += item.quantity;
-  // });
   if (totalQuantity === 0) {
     cartQuantityEl.textContent = "";
     if (checkOutItemsEl) checkOutItemsEl.textContent = "Cart is empty";
@@ -93,4 +93,6 @@ export function setDeliveryOption(productId, deliveryId) {
         inputQuantity.dataset.deliveryId = deliveryId;
       }
     });
+
+  document.querySelectorAll(".order__remove").forEach((removeElement) => {});
 }

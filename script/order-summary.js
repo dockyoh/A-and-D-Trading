@@ -69,6 +69,10 @@ export function renderSummaryHTML() {
     orderSummaryObj[0].grandTotal
   );
 
+  content.querySelector(".summary__total-price").textContent = formatPrice(
+    orderSummaryObj[0].grandTotal
+  );
+
   placeHolderEl.appendChild(content);
   orderSummaryEl = placeHolderEl.querySelector(".summary");
 }
@@ -94,6 +98,9 @@ export function updateSummaryContent() {
 
   orderSummaryEl.querySelector(".summary__estimated-tax-price").textContent =
     formatPrice(orderSummaryObj[0].estematedTax);
+
+  orderSummaryEl.querySelector(".summary__total-price").textContent =
+    formatPrice(orderSummaryObj[0].grandTotal);
 }
 
 export function addShippingPrice(cartItemId) {
@@ -117,5 +124,21 @@ export function reAddShippingPrice() {
         addShippingPrice(cartItem.deliveryOptionId);
       }
     });
+  });
+}
+
+export function removeShippingPrice(cartId) {
+  let cartOptionId = null;
+  console.log("CART ID: ", cartId);
+  cart.forEach((cartItem) => {
+    if (cartItem.id === cartId) {
+      cartOptionId = cartItem.deliveryOptionId;
+    }
+  });
+  deliveryOption.forEach((optionItem) => {
+    if (optionItem.id === cartOptionId) {
+      console.log("DELIVERY PRICE IN CENTS: ", optionItem.deliveryPriceInCents);
+      orderSummaryObj[0].totalShippingPrice -= optionItem.deliveryPriceInCents;
+    }
   });
 }

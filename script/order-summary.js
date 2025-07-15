@@ -14,6 +14,7 @@ export let orderSummaryObj = [
     totalPrice: 0,
     totalShippingPrice: 0,
     totalBeforeTax: 0,
+    estematedTax: 0,
   },
 ];
 
@@ -32,6 +33,10 @@ export function calculateTotalBeforeTax() {
   const totalBeforeTax =
     orderSummaryObj[0].totalPrice + orderSummaryObj[0].totalShippingPrice;
   orderSummaryObj[0].totalBeforeTax = totalBeforeTax;
+
+  const estematedTax = totalBeforeTax * 0.1;
+  orderSummaryObj[0].estematedTax = estematedTax.toFixed(2);
+  console.log("TAX: ", formatPrice(estematedTax));
 }
 
 export function renderSummaryHTML() {
@@ -52,6 +57,9 @@ export function renderSummaryHTML() {
   content.querySelector(".summary__before-tax-price").textContent = formatPrice(
     orderSummaryObj[0].totalBeforeTax
   );
+
+  content.querySelector(".summary__estimated-tax-price").textContent =
+    formatPrice(orderSummaryObj[0].estematedTax);
 
   placeHolderEl.appendChild(content);
   orderSummaryEl = placeHolderEl.querySelector(".summary");
@@ -75,6 +83,9 @@ export function updateSummaryContent() {
 
   orderSummaryEl.querySelector(".summary__before-tax-price").textContent =
     formatPrice(orderSummaryObj[0].totalBeforeTax);
+
+  orderSummaryEl.querySelector(".summary__estimated-tax-price").textContent =
+    formatPrice(orderSummaryObj[0].estematedTax);
 }
 
 export function addShippingPrice(cartItemId) {

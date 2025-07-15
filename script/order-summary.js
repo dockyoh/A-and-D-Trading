@@ -15,6 +15,7 @@ export let orderSummaryObj = [
     totalShippingPrice: 0,
     totalBeforeTax: 0,
     estematedTax: 0,
+    grandTotal: 0,
   },
 ];
 
@@ -37,6 +38,9 @@ export function calculateTotalBeforeTax() {
   const estematedTax = totalBeforeTax * 0.1;
   orderSummaryObj[0].estematedTax = estematedTax.toFixed(2);
   console.log("TAX: ", formatPrice(estematedTax));
+
+  const grandTotal = totalBeforeTax + estematedTax;
+  orderSummaryObj[0].grandTotal = grandTotal;
 }
 
 export function renderSummaryHTML() {
@@ -60,6 +64,10 @@ export function renderSummaryHTML() {
 
   content.querySelector(".summary__estimated-tax-price").textContent =
     formatPrice(orderSummaryObj[0].estematedTax);
+
+  content.querySelector(".summary__total-price").textContent = formatPrice(
+    orderSummaryObj[0].grandTotal
+  );
 
   placeHolderEl.appendChild(content);
   orderSummaryEl = placeHolderEl.querySelector(".summary");
